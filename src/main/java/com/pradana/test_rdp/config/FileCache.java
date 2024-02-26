@@ -23,9 +23,6 @@ public class FileCache extends AbstractCacheManager {
     @Override
     @Nullable
     public Cache getCache(String name) {
-        System.out.println("Get cache name " + name);
-        System.out.println("Caches name " + caches);
-        System.out.println("Caches map " + cacheMap);
         if (cacheMap.containsKey(name)) {
             return cacheMap.get(name);
         } else {
