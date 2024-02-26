@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-TestRdpApplication<test_rdp>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.pradana.test_rdp.TestRdpApplication",
+      "projectName": "test_rdp",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
