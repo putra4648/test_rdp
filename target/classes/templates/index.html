@@ -39,13 +39,40 @@
         $.get("/search?" + $.param({ q: $("#querySearch").val() })).then(
           (res) => {
             $("#result").html("");
-            if (Array.isArray(res.data)) {
+            if (Array.isArray(res)) {
               const datas = [];
-              res.data.forEach((data) => {
+              let temp = [];
+              res.forEach((data) => {
                 const template = `
             <div class="col">
-              <h1>${data.name}</h1>  
-              <button class='btn btn-primary'>See Detail</button>
+              <div style='margin: auto 10px;'>
+                <h5>Information</h5>
+                <p>${data.name}</p>
+                <p>${data.gender}</p>
+              </div>
+              <div style='margin: auto 10px;'>
+                <h5>Planet Information</h5>
+                <p>${data.planet.name}</p>
+                <p>${data.planet.population}</p>
+              </div>
+              <div style='margin: auto 10px;'>
+                <h5>Starship Information</h5>
+                <div id='startshipsData'>
+                  ${
+                    data.startships.length > 0
+                      ? data.startships
+                          .map((s) => {
+                            return `
+                <p>Name : <span>${s.name}</span></p>
+                <p>Model : <span>${s.model}</span></p>
+                <hr>
+              `;
+                          })
+                          .join("\n")
+                      : "<p>-</p>"
+                  }
+                </div>
+              </div>
             </div>
             `;
                 datas.push(template);
